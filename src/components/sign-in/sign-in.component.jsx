@@ -38,11 +38,11 @@ class SignIn extends Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <FormInput name="email" value={this.state.email} 
-                        type="email" placeholder="E-mail" required 
+                        type="email" required 
                         label="email"
                         handleChange={this.handleChange}/>
                     <FormInput name="password" value={this.state.password} 
-                        type="password" placeholder="Password" required 
+                        type="password"  required 
                         handleChange={this.handleChange}
                         label="password" />
                     <div className='buttons'>
