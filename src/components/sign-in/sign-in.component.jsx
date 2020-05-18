@@ -58,7 +58,7 @@ class SignIn extends Component {
                         <CustomButton type="submit">
                             Sign in
                         </CustomButton>
-                        <CustomButton onClick={signInWithGoogle} thirdPartyProviderSignIn='google' >
+                        <CustomButton type="button" onClick={signInWithGoogle} thirdPartyProviderSignIn='google' >
                             Sign in with Google
                         </CustomButton>
                         {/* <CustomButton onClick={signInWithGoogle} thirdPartyProviderSignIn='facebook' >
