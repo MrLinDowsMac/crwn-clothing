@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { auth } from '../../firebase/firebase.utils';
+import { connect } from 'react-redux'; //High Order Component modify our component to allow us use redux
 
 import { ReactComponent as Logo } from "../../assets/original.svg";
 
@@ -27,4 +28,9 @@ const Header = ({ currentUser }) => (
     </div>
 );
 
-export default Header;
+const mapStateToProps = state => ({ //state is root reducer
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header); //first arg is the state of reducer
+//export default Header;
