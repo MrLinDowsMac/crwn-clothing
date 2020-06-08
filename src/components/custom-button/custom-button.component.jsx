@@ -1,13 +1,12 @@
 import React from "react";
 
-import './custom-button.styles.scss';
+//import './custom-button.styles.scss';
+import { CustomButtonContainer } from './custom-button.styles';
 
-const CustomButton = ({children, thirdPartyProviderSignIn, inverted, ...otherProps}) => (
-    <button className={`${thirdPartyProviderSignIn != null ?
-                        thirdPartyProviderSignIn + '-sign-in' : ''} 
-                        ${inverted ? 'inverted' : '' } custom-button` } {...otherProps} >
+const CustomButton = ({children, ...props}) => (
+    <CustomButtonContainer {...props}>
          {children} {/*children is what is inside <CustomButton>children</CustomButton> */}
-    </button>
+    </CustomButtonContainer>
 );
 
 export default CustomButton;

@@ -61,8 +61,8 @@ class SignIn extends Component {
                         <CustomButton type="button" onClick={signInWithGoogle} thirdPartyProviderSignIn='google' >
                             Sign in with Google
                         </CustomButton>
-                        {/* <CustomButton onClick={signInWithGoogle} thirdPartyProviderSignIn='facebook' >
-                        Sign in with Facebook
+                        {/* <CustomButton type="button" onClick={signInWithGoogle} thirdPartyProviderSignIn='facebook' >
+                            Sign in with Facebook
                         </CustomButton> */}
                     </div>
                 </form>
