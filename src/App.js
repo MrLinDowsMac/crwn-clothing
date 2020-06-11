@@ -7,10 +7,13 @@ import ShopPage from './pages/shop/shop.component';
 import Header from "./components/header/header.component";
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import CheckoutPage from './pages/checkout/checkout.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument 
+        //addCollectionAndDocuments 
+       } from './firebase/firebase.utils';
 import { setCurrentUser } from "./redux/user/user.actions";
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
+//import { selectCollectionsForPreview } from "./redux/shop/shop.selectors"; //just used once
 
 
 class App extends React.Component{
@@ -26,7 +29,8 @@ class App extends React.Component{
   unsuscribeFromAuth = null;
 
   componentDidMount(){
-    //const { setCurrentUser } = this.props;
+    //const { setCurrentUser, collectionsArray } = this.props;
+    const { setCurrentUser } = this.props;
 
     this.unsuscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
     
@@ -35,15 +39,17 @@ class App extends React.Component{
 
         userRef.onSnapshot(snapShot => { //Se suscribe
           // this.setState({
-          this.props.setCurrentUser({ 
+          setCurrentUser({ 
               id: snapShot.id,
                 ...snapShot.data()
           });
         });
       }
       
-      //this.setState({ currentUser: userAuth });
-      this.props.setCurrentUser( userAuth );
+      //this.setState({ currentUser: userAuth });  //removed due now use redux
+      setCurrentUser( userAuth );
+      //add shop collecion to firebase once:
+      //addCollectionAndDocuments('collections' , collectionsArray.map( ({ title, items }) => ({ title, items })  )); 
     });
   }
 
@@ -67,7 +73,8 @@ class App extends React.Component{
 }
 
 const mapStateToProps = createStructuredSelector({ //userReducer
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser//,
+  //collectionsArray: selectCollectionsForPreview  //just used once
 })
 
 const mapDispatchToProps = dispatch => ({
